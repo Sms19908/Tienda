@@ -10,11 +10,11 @@
     </parent>
     <groupId>com.tiendaEj</groupId>
     <artifactId>demo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1</version>
     <name>Tienda</name>
     <description>Proyecto web tienda</description>
     <properties>
-        <java.version>19</java.version>
+        <java.version>17</java.version>
     </properties>
     <dependencies>
         <dependency>
@@ -42,6 +42,32 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        
+        <dependency>            
+            <groupId>org.webjars</groupId>            
+            <artifactId>bootstrap</artifactId>            
+            <version>5.3.2</version>        
+        </dependency>        
+        <dependency>            
+            <groupId>org.webjars</groupId>            
+            <artifactId>font-awesome</artifactId>            
+            <version>6.4.0</version>        
+        </dependency>        
+        <dependency>            
+            <groupId>org.webjars</groupId>            
+            <artifactId>jquery</artifactId>            
+            <version>3.7.0</version>        
+        </dependency>        
+        <dependency>            
+            <groupId>org.webjars</groupId>            
+            <artifactId>popper.js</artifactId>            
+            <version>2.11.7</version>        
+        </dependency>        
+        <dependency>            
+            <groupId>org.webjars</groupId>            
+            <artifactId>webjars-locator</artifactId>            
+            <version>0.47</version>        
+        </dependency>
     </dependencies>
 
     <build>
@@ -60,6 +86,7 @@
             </plugin>
         </plugins>
     </build>
+    
     <repositories>
         <repository>
             <id>spring-milestones</id>
