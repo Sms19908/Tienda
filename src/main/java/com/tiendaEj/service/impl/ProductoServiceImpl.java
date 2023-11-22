@@ -1,3 +1,6 @@
+
+/*Para la implementación*/
+
 package com.tiendaEj.service.impl;
 
 import com.tiendaEj.dao.ProductoDao;
@@ -13,18 +16,17 @@ public class ProductoServiceImpl implements ProductoService {
 
     @Autowired
     private ProductoDao productoDao;
-
     
     @Override
-    @Transactional(readOnly = true)
-    public List<Producto> getProductos(boolean activo) {
+    public List<Producto> getProducto(boolean activo) {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         var productos = productoDao.findAll();
         if (activo) {
-            productos.removeIf(e -> !e.isActivo());
+            productos.removeIf(e -> !e.getActivo());
         }
         return productos;
     }
-
+    
     @Override
     @Transactional(readOnly = true)
     public Producto getProducto(Producto producto) {
@@ -43,10 +45,10 @@ public class ProductoServiceImpl implements ProductoService {
         productoDao.delete(producto);
     }
     
-    //Lista de productos utilizando un metodo Query
     @Override
     @Transactional(readOnly = true)
     public List<Producto> consultaQuery(double precioInf, double precioSup){
         return productoDao.findByPrecioBetweenOrderByDescripcion(precioInf, precioSup);
     }
+    
 }

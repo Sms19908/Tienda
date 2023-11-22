@@ -1,3 +1,6 @@
+
+/*Para la implementación*/
+
 package com.tiendaEj.service.impl;
 
 import com.tiendaEj.dao.CategoriaDao;
@@ -13,18 +16,17 @@ public class CategoriaServiceImpl implements CategoriaService {
 
     @Autowired
     private CategoriaDao categoriaDao;
-
     
     @Override
-    @Transactional(readOnly = true)
-    public List<Categoria> getCategorias(boolean activo) {
+    public List<Categoria> getCategoria(boolean activo) {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         var categorias = categoriaDao.findAll();
         if (activo) {
-            categorias.removeIf(e -> !e.isActivo());
+            categorias.removeIf(e -> !e.getActivo());
         }
         return categorias;
     }
-
+    
     @Override
     @Transactional(readOnly = true)
     public Categoria getCategoria(Categoria categoria) {
@@ -42,4 +44,5 @@ public class CategoriaServiceImpl implements CategoriaService {
     public void delete(Categoria categoria) {
         categoriaDao.delete(categoria);
     }
+    
 }

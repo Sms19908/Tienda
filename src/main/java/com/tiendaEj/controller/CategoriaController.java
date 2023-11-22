@@ -1,3 +1,4 @@
+
 package com.tiendaEj.controller;
 
 import com.tiendaEj.domain.Categoria;
@@ -12,19 +13,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+
 @Controller
 @RequestMapping("/categoria")
 public class CategoriaController {
-
+    
     @Autowired
     private CategoriaService categoriaService;
-
+    
     @GetMapping("/listado")
-    public String listado(Model model) {
-        var categorias = categoriaService.getCategorias(false);
-        model.addAttribute("categorias", categorias);
-        model.addAttribute("totalCategorias", categorias.size());
-        return "categoria/listado";
+    public String listado(Model model){
+        var categorias = categoriaService.getCategoria(false);
+        model.addAttribute("categorias",categorias);
+        model.addAttribute("totalCategorias",categorias.size());
+        return "/categoria/listado"; // Nombre del HTML, se encuentra en templates.categoria/listado
     }
     
     @GetMapping("/nuevo")
@@ -62,4 +64,5 @@ public class CategoriaController {
         model.addAttribute("categoria", categoria);
         return "/categoria/modifica";
     }
+    
 }

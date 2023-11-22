@@ -1,5 +1,7 @@
+
 package com.tiendaEj.controller;
 
+import com.tiendaEj.domain.Categoria;
 import com.tiendaEj.domain.Producto;
 import com.tiendaEj.service.CategoriaService;
 import com.tiendaEj.service.ProductoService;
@@ -13,26 +15,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+
 @Controller
 @RequestMapping("/producto")
 public class ProductoController {
-
+    
     @Autowired
     private ProductoService productoService;
     
     @Autowired
     private CategoriaService categoriaService;
-
+    
     @GetMapping("/listado")
-    public String listado(Model model) {
-        var productos = productoService.getProductos(false);
-        model.addAttribute("productos", productos);
-        model.addAttribute("totalProductos", productos.size());
+    public String listado(Model model){
+        var productos = productoService.getProducto(false);
+        model.addAttribute("productos",productos);
+        model.addAttribute("totalProductos",productos.size());
         
-        var categorias = categoriaService.getCategorias(false);
-        model.addAttribute("categorias", categorias);
+        // Para obtener el listado de las categorías
+        var categorias = categoriaService.getCategoria(false);
+        model.addAttribute("categorias",categorias);
         
-        return "producto/listado";
+        return "/producto/listado"; // Nombre del HTML, se encuentra en templates.producto/listado
     }
     
     @GetMapping("/nuevo")
@@ -68,6 +72,12 @@ public class ProductoController {
     public String productoModificar(Producto producto, Model model) {
         producto = productoService.getProducto(producto);
         model.addAttribute("producto", producto);
+        
+        // Para obtener el listado de las categorías
+        var categorias = categoriaService.getCategoria(false);
+        model.addAttribute("categorias",categorias);
+        
         return "/producto/modifica";
     }
+    
 }

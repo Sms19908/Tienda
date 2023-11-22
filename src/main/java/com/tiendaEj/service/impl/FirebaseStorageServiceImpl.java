@@ -1,3 +1,4 @@
+
 package com.tiendaEj.service.impl;
 
 import com.google.auth.Credentials;
@@ -26,13 +27,13 @@ public class FirebaseStorageServiceImpl implements FirebaseStorageService {
             // El nombre original del archivo local del cliene
             String extension = archivoLocalCliente.getOriginalFilename();
 
-            // Se genera el nombre segÃºn el cÃ³digo del articulo. 
+            // Se genera el nombre según el código del articulo. 
             String fileName = "img" + sacaNumero(id) + extension;
 
             // Se convierte/sube el archivo a un archivo temporal
             File file = this.convertToFile(archivoLocalCliente);
 
-            // se copia a Firestore y se obtiene el url vÃ¡lido de la imagen (por 10 aÃ±os) 
+            // se copia a Firestore y se obtiene el url válido de la imagen (por 10 años) 
             String URL = this.uploadFile(file, carpeta, fileName);
 
             // Se elimina el archivo temporal cargado desde el cliente
@@ -58,7 +59,7 @@ public class FirebaseStorageServiceImpl implements FirebaseStorageService {
         return url;
     }
 
-    //MÃ©todo utilitario que convierte el archivo desde el equipo local del usuario a un archivo temporal en el servidor
+    //Método utilitario que convierte el archivo desde el equipo local del usuario a un archivo temporal en el servidor
     private File convertToFile(MultipartFile archivoLocalCliente) throws IOException {
         File tempFile = File.createTempFile("img", null);
         try (FileOutputStream fos = new FileOutputStream(tempFile)) {
@@ -68,7 +69,7 @@ public class FirebaseStorageServiceImpl implements FirebaseStorageService {
         return tempFile;
     }
 
-    //MÃ©todo utilitario para obtener un string con ceros....
+    //Método utilitario para obtener un string con ceros....
     private String sacaNumero(long id) {
         return String.format("%019d", id);
     }

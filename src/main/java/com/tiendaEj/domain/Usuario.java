@@ -10,22 +10,26 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="categoria") // Tiene la tabla "categoría" mapeada
-public class Categoria implements Serializable{
+@Table(name="usuario") // Tiene la tabla "categoría" mapeada
+public class Usuario implements Serializable{
     
     private static final long serialVersionUID = 1L;
     
     @Id                                               // Este elementos se usa como id
     @GeneratedValue(strategy=GenerationType.IDENTITY) // Para el autoincremental
-    @Column(name="id_categoria")
-    private Long idCategoria;
-    
-    private String descripcion;
+    @Column(name="id_usuario")
+    private Long idUsuario;
+    private String username;    
+    private String password;
+    private String nombre;
+    private String apellidos;
+    private String correo;
+    private String telefono;    
     private String rutaImagen;
-    private Boolean activo;
+    private boolean activo;
 
     @OneToMany
-    @JoinColumn(name="id_categoria",updatable=false)
-    private List<Producto> productos;
+    @JoinColumn(name="id_usuario",updatable=false)
+    private List<Rol> roles;
   
 }
