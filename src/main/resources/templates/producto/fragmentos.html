@@ -46,7 +46,7 @@
 
                                     <select class="form-select" 
                                             aria-label="Default select example" 
-                                            name="idCategoria">
+                                            name="categoria.idCategoria">
 
                                         <option th:each="c : ${categorias}" 
                                                 th:value="${c.idCategoria}" 
@@ -54,8 +54,6 @@
                                         </option>
 
                                     </select>
-
-                                    <input type="number" class="form-control" name="idCategoria" required="true"/>
                                 </div>
 
                                 <div class="mb-3">

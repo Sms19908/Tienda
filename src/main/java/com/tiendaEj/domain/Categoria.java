@@ -20,14 +20,6 @@ public class Categoria implements Serializable {
     private String descripcion;
     private String rutaImagen;
     private boolean activo;
-
-    public Categoria() {
-    }
-
-    public Categoria(String descripcion, boolean activo) {
-        this.descripcion = descripcion;
-        this.activo = activo;
-    }
     
     @OneToMany
     @JoinColumn(name="id_categoria", updatable = false)
