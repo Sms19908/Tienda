@@ -47,13 +47,13 @@ public class UsuarioController {
                             usuario.getIdUsuario()));
         }
         usuarioService.save(usuario,true);
-        return "redirect:/usuario/listado";
+        return "/usuario/listado";
     }
 
     @GetMapping("/eliminar/{idUsuario}")
     public String usuarioEliminar(Usuario usuario) {
         usuarioService.delete(usuario);
-        return "redirect:/usuario/listado";
+        return "/usuario/listado";
     }
 
     @GetMapping("/modificar/{idUsuario}")
