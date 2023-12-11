@@ -22,7 +22,7 @@ public class ProductoServiceImpl implements ProductoService {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         var productos = productoDao.findAll();
         if (activo) {
-            productos.removeIf(e -> !e.getActivo());
+            productos.removeIf(e -> !e.isActivo());
         }
         return productos;
     }
